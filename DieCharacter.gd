@@ -10,6 +10,7 @@ var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
 var state = "WAIT_FOR_INPUT"
 onready var player = $AnimationPlayer
+onready var ray = $RayCast2D
  
 var event_array = []
 var my_name: String
@@ -34,8 +35,14 @@ func return_upward_side():
 	if (current_state[0].cross(current_state[1])[2] < -0.5):
 		return(4)
 
+func can_move(direction):
+	ray.cast_to = direction * MOVEMENT_SIZE
+	ray.force_raycast_update()
+	return !ray.is_colliding()
 
 func move_right():
+	if !can_move(Vector2.RIGHT):
+		return
 	current_state[0] = current_state[0].rotated(Vector3(0,1,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(0,1,0), PI/2)
 
@@ -48,18 +55,24 @@ func move_right():
 	# self.position += Vector2(MOVEMENT_SIZE,0)*10
 	pass
 func move_left():
+	if !can_move(Vector2.LEFT):
+		return
 	current_state[0] = current_state[0].rotated(Vector3(0,-1,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(0,-1,0), PI/2)
 	position += Vector2.LEFT*MOVEMENT_SIZE
 
 	pass
 func move_up():
+	if !can_move(Vector2.UP):
+		return
 	current_state[0] = current_state[0].rotated(Vector3(1,0,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(1,0,0), PI/2)
 
 	position += Vector2.UP*MOVEMENT_SIZE
 	pass
 func move_down():
+	if !can_move(Vector2.DOWN):
+		return
 	current_state[0] = current_state[0].rotated(Vector3(-1,0,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(-1,0,0), PI/2)
 
@@ -105,4 +118,4 @@ func _process(delta):
 			process_input()
 		"EVENTS_RUNNING":
 			run_events_until_empty()
-	# player.play(str(return_upward_side()))
+	player.play(str(return_upward_side()))
