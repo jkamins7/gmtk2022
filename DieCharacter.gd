@@ -7,6 +7,7 @@ const MOVEMENT_SIZE = 32
 
 var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
+const tol = .01
 signal change_face(old_face, new_face)
 
 var state = "WAIT_FOR_INPUT"
@@ -43,26 +44,28 @@ func can_move(direction):
 	return !ray.is_colliding()
 
 func rotate(direction):
+	print("Rotating")
 	if !can_move(direction):
 		return false
 	var rotation_axis = Vector3.ZERO
-	match direction:
-		Vector2.RIGHT:
-			rotation_axis = Vector3(0,1,0)
-		Vector2.LEFT:
+	if ((direction - Vector2.RIGHT).length() < tol):
+		rotation_axis = Vector3(0,1,0)
+	if ((direction - Vector2.LEFT).length() < tol):
 			rotation_axis = Vector3(0,-1,0)
-		Vector2.UP:
+	if ((direction - Vector2.UP).length() < tol):
 			rotation_axis = Vector3(1,0,0)	
-		Vector2.DOWN:
+	if ((direction - Vector2.DOWN).length() < tol):
 			rotation_axis = Vector3(-1,0,0)
 	current_state[0] = current_state[0].rotated(rotation_axis,PI/2)
 	current_state[1] = current_state[1].rotated(rotation_axis,PI/2)
 	return true
 
 func slide(direction):
+	print("Sliding")
 	position += direction * MOVEMENT_SIZE
 
 func move(var direction):
+	print("Full Move")
 	var previous_face = return_upward_side()
 	if !rotate(direction):
 		return false

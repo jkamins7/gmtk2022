@@ -1,4 +1,4 @@
-extends Area2D
+extends Sprite
 
 
 # Declare member variables here. Examples:
@@ -6,20 +6,14 @@ extends Area2D
 # var b = "text"
 
 
+export(int) var permitted_number = 3
+export(Vector2) var parent_transform = Vector2.UP
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("area_entered", self, "_on_Hitbox_area_entered")
 	var player_node = get_owner().find_node("Player")
 	player_node.connect("change_face", self, "_on_change_face")
+	find_node("Hitbox").parent_transform = 	Vector2.UP.rotated(self.global_rotation_degrees*2*PI/360)
 
 
 func _on_change_face(old_face, new_face):
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-func _on_Hitbox_area_entered(area):
-	print("Something")
-	area.get_parent().add_event(PushEvent.new(area.get_parent(), Vector2.RIGHT, 3))
-	pass # Replace with function body.
+	print("Changed from", old_face, "->", new_face)
