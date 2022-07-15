@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "PushEvent",
 "language": "GDScript",
-"path": "res://push_event.gd"
+"path": "res://PushEvent.gd"
 } ]
 _global_script_class_icons={
 "PushEvent": ""

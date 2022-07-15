@@ -105,5 +105,4 @@ func _process(delta):
 			process_input()
 		"EVENTS_RUNNING":
 			run_events_until_empty()
-	player.play(str(return_upward_side()))
-#	
+	# player.play(str(return_upward_side()))
