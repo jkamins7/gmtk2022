@@ -12,6 +12,7 @@ var state = "WAIT_FOR_INPUT"
 onready var player = $AnimationPlayer
  
 var event_array = []
+var my_name: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,7 +39,9 @@ func move_right():
 	current_state[0] = current_state[0].rotated(Vector3(0,1,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(0,1,0), PI/2)
 	
-	event_array.push_back(PushEvent.new())
+	my_name = "Player"
+	event_array.push_back(PushEvent.new(self))
+	event_array.push_back(PushEvent.new(self))
 
 	
 	move_and_slide_with_snap(Vector2(1,0)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
