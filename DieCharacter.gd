@@ -44,6 +44,7 @@ func can_move(direction):
 	return !ray.is_colliding()
 
 func rotate(direction):
+	print("Rotating")
 	if !can_move(direction):
 		return false
 	var rotation_axis = Vector3.ZERO
@@ -60,9 +61,11 @@ func rotate(direction):
 	return true
 
 func slide(direction):
+	print("Sliding")
 	position += direction * MOVEMENT_SIZE
 
 func move(var direction):
+	print("Full Move")
 	var previous_face = return_upward_side()
 	if !rotate(direction):
 		return false

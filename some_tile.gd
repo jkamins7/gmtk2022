@@ -16,8 +16,4 @@ func _ready():
 
 
 func _on_change_face(old_face, new_face):
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	print("Changed from", old_face, "->", new_face)
