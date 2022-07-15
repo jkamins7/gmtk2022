@@ -100,6 +100,3 @@ func _process(delta):
 			process_input()
 		"EVENTS_RUNNING":
 			run_events_until_empty()
-		
-		
-#	pass
