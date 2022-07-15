@@ -15,10 +15,10 @@ func _ready():
 	pass # Replace with function body.
 
 func run():
-	print("I moved:")
-	print(thing_to_move.my_name)
 	var current_side = thing_to_move.return_upward_side()
 	if (current_side == self.valid_number):
+		print("I moved:")
+		print(thing_to_move.my_name)
 		match self.direction:
 			"RIGHT":
 				thing_to_move.move_right()

@@ -16,5 +16,6 @@ func _ready():
 #	pass
 
 func _on_Hitbox_area_entered(area):
-	area.get_parent().add_event(PushEvent.new(area.get_parent(), "RIGHT", 2))
+	print("Something")
+	area.get_parent().add_event(PushEvent.new(area.get_parent(), "RIGHT", 3))
 	pass # Replace with function body.

@@ -7,8 +7,11 @@ const MOVEMENT_SIZE = 32
 
 var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
+signal change_face(old_face, new_face)
+
 var state = "WAIT_FOR_INPUT"
 onready var player = $AnimationPlayer
+onready var ray = $RayCast2D
  
 var event_array = []
 var my_name: String
@@ -34,48 +37,72 @@ func return_upward_side():
 	if (current_state[0].cross(current_state[1])[2] < -0.5):
 		return(4)
 
+func can_move(direction):
+	ray.cast_to = direction * MOVEMENT_SIZE
+	ray.force_raycast_update()
+	return !ray.is_colliding()
+	return(true)
 
-func move_right():
-	current_state[0] = current_state[0].rotated(Vector3(0,1,0), PI/2)
-	current_state[1] = current_state[1].rotated(Vector3(0,1,0), PI/2)
+func rotate(direction):
+	if !can_move(direction):
+		return false
+	var rotation_axis = Vector3.ZERO
+	match direction:
+		Vector2.RIGHT:
+			rotation_axis = Vector3(0,1,0)
+		Vector2.LEFT:
+			rotation_axis = Vector3(0,-1,0)
+		Vector2.UP:
+			rotation_axis = Vector3(1,0,0)	
+		Vector2.DOWN:
+			rotation_axis = Vector3(-1,0,0)
+	current_state[0] = current_state[0].rotated(rotation_axis,PI/2)
+	current_state[1] = current_state[1].rotated(rotation_axis,PI/2)
+	return true
+
+func slide(direction):
+	position += direction * MOVEMENT_SIZE
+
+func move(var direction):
+	var previous_face = return_upward_side()
+	if !rotate(direction):
+		return false
+	emit_signal("change_face", previous_face, return_upward_side())
+	slide(direction)
+	return true
 	
-	move_and_slide_with_snap(Vector2(1,0)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
-	# self.position += Vector2(MOVEMENT_SIZE,0)*10
-	pass
+	
+	
+func move_right():
+	self.move(Vector2.RIGHT)
+
 func move_left():
-	current_state[0] = current_state[0].rotated(Vector3(0,-1,0), PI/2)
-	current_state[1] = current_state[1].rotated(Vector3(0,-1,0), PI/2)
-	move_and_slide_with_snap(Vector2(-1,0)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
-	pass
+	self.move(Vector2.LEFT)
+
 func move_up():
-	current_state[0] = current_state[0].rotated(Vector3(1,0,0), PI/2)
-	current_state[1] = current_state[1].rotated(Vector3(1,0,0), PI/2)
-	move_and_slide_with_snap(Vector2(0,-1)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
-	pass
+	self.move(Vector2.UP)
+
 func move_down():
-	current_state[0] = current_state[0].rotated(Vector3(-1,0,0), PI/2)
-	current_state[1] = current_state[1].rotated(Vector3(-1,0,0), PI/2)
-	move_and_slide_with_snap(Vector2(0,1)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
-	pass
+	self.move(Vector2.DOWN)
 
 func process_input():
 	if Input.is_action_just_pressed("ui_right"):
-		move_right()
+		move(Vector2.RIGHT)
 		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_left"):
-		move_left()
+		move(Vector2.LEFT)
 		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_up"):
-		move_up()
+		move(Vector2.UP)
 		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_down"):
-		move_down()
+		move(Vector2.DOWN)
 		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
@@ -88,7 +115,7 @@ func run_events_until_empty():
 		state = "WAIT_FOR_INPUT"
 		pass
 	
-	while(!event_array.empty()):
+	if(!event_array.empty()):
 		var this_event = event_array.pop_front()
 		this_event.run()
 
@@ -99,4 +126,4 @@ func _physics_process(delta):
 			process_input()
 		"EVENTS_RUNNING":
 			run_events_until_empty()
-	# player.play(str(return_upward_side()))
+	player.play(str(return_upward_side()))
