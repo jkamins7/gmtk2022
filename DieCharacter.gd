@@ -9,6 +9,8 @@ const MOVEMENT_SIZE = 32
 var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
 var state = "WAIT_FOR_INPUT"
+onready var player = $AnimationPlayer
+ 
 var event_array = []
 var my_name: String
 
@@ -100,3 +102,4 @@ func _process(delta):
 			process_input()
 		"EVENTS_RUNNING":
 			run_events_until_empty()
+	# player.play(str(return_upward_side()))
