@@ -38,29 +38,32 @@ func return_upward_side():
 func move_right():
 	current_state[0] = current_state[0].rotated(Vector3(0,1,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(0,1,0), PI/2)
-	
+
 	my_name = "Player"
 	event_array.push_back(PushEvent.new(self))
 	event_array.push_back(PushEvent.new(self))
 
-	
-	move_and_slide_with_snap(Vector2(1,0)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
+	position += Vector2.RIGHT*MOVEMENT_SIZE
+
 	# self.position += Vector2(MOVEMENT_SIZE,0)*10
 	pass
 func move_left():
 	current_state[0] = current_state[0].rotated(Vector3(0,-1,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(0,-1,0), PI/2)
-	move_and_slide_with_snap(Vector2(-1,0)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
+	position += Vector2.LEFT*MOVEMENT_SIZE
+
 	pass
 func move_up():
 	current_state[0] = current_state[0].rotated(Vector3(1,0,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(1,0,0), PI/2)
-	move_and_slide_with_snap(Vector2(0,-1)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
+
+	position += Vector2.UP*MOVEMENT_SIZE
 	pass
 func move_down():
 	current_state[0] = current_state[0].rotated(Vector3(-1,0,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(-1,0,0), PI/2)
-	move_and_slide_with_snap(Vector2(0,1)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
+
+	position += Vector2.DOWN*MOVEMENT_SIZE
 	pass
 
 func process_input():
