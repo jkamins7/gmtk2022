@@ -8,6 +8,8 @@ const MOVEMENT_SIZE = 32
 
 var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
+var state = "WAIT_FOR_INPUT"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -71,7 +73,15 @@ func process_input():
 		pass
 	
 
+func run_events_until_empty():
+	pass
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	process_input()
+	match state:
+		"WAIT_FOR_INPUT":
+			process_input()
+		"EVENTS_RUNNING":
+			run_events_until_empty()
+		
 #	pass
