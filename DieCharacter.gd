@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -16,6 +15,7 @@ var my_name: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	my_name = "Player"	
 	pass # Replace with function body.
 
 func return_upward_side():
@@ -38,11 +38,6 @@ func return_upward_side():
 func move_right():
 	current_state[0] = current_state[0].rotated(Vector3(0,1,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(0,1,0), PI/2)
-	
-	my_name = "Player"
-	event_array.push_back(PushEvent.new(self))
-	event_array.push_back(PushEvent.new(self))
-
 	
 	move_and_slide_with_snap(Vector2(1,0)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
 	# self.position += Vector2(MOVEMENT_SIZE,0)*10
@@ -84,7 +79,9 @@ func process_input():
 		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
-	
+
+func add_event(event):
+	event_array.push_back(event)
 
 func run_events_until_empty():
 	if(event_array.empty()):
@@ -94,9 +91,9 @@ func run_events_until_empty():
 	while(!event_array.empty()):
 		var this_event = event_array.pop_front()
 		this_event.run()
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	match state:
 		"WAIT_FOR_INPUT":
 			process_input()
