@@ -9,6 +9,7 @@ const MOVEMENT_SIZE = 32
 var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
 var state = "WAIT_FOR_INPUT"
+var event_array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,10 +31,13 @@ func return_upward_side():
 	if (current_state[0].cross(current_state[1])[2] < -0.5):
 		return(4)
 
+
 func move_right():
 	current_state[0] = current_state[0].rotated(Vector3(0,1,0), PI/2)
 	current_state[1] = current_state[1].rotated(Vector3(0,1,0), PI/2)
 	
+	event_array.push_back(PushEvent.new())
+
 	
 	move_and_slide_with_snap(Vector2(1,0)*MOVEMENT_SIZE * 100,Vector2(MOVEMENT_SIZE,MOVEMENT_SIZE))
 	# self.position += Vector2(MOVEMENT_SIZE,0)*10
@@ -58,23 +62,33 @@ func process_input():
 	if Input.is_action_just_pressed("ui_right"):
 		move_right()
 		print(return_upward_side())
+		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_left"):
 		move_left()
 		print(return_upward_side())
+		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_up"):
 		move_up()
 		print(return_upward_side())
+		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_down"):
 		move_down()
 		print(return_upward_side())
+		state = "EVENTS_RUNNING"
 		pass
 	
 
 func run_events_until_empty():
-	pass
+	if(event_array.empty()):
+		state = "WAIT_FOR_INPUT"
+		pass
+	
+	while(!event_array.empty()):
+		var this_event = event_array.pop_front()
+		this_event.run()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -83,5 +97,6 @@ func _process(delta):
 			process_input()
 		"EVENTS_RUNNING":
 			run_events_until_empty()
+		
 		
 #	pass
