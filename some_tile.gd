@@ -8,9 +8,13 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	connect("area_entered", self, "_on_Hitbox_area_entered")
+	var player_node = get_owner().find_node("Player")
+	player_node.connect("change_face", self, "_on_change_face")
 
 
+func _on_change_face(old_face, new_face):
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

@@ -18,7 +18,7 @@ var my_name: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	my_name = "Player"	
+	my_name = "Player"
 	pass # Replace with function body.
 
 func return_upward_side():
@@ -41,7 +41,6 @@ func can_move(direction):
 	ray.cast_to = direction * MOVEMENT_SIZE
 	ray.force_raycast_update()
 	return !ray.is_colliding()
-	return(true)
 
 func rotate(direction):
 	if !can_move(direction):
@@ -106,7 +105,7 @@ func run_events_until_empty():
 		this_event.run()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	match state:
 		"WAIT_FOR_INPUT":
 			process_input()
