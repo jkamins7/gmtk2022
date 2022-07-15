@@ -17,5 +17,5 @@ func _ready():
 
 func _on_Hitbox_area_entered(area):
 	print("Something")
-	area.get_parent().add_event(PushEvent.new(area.get_parent(), "RIGHT", 3))
+	area.get_parent().add_event(PushEvent.new(area.get_parent(), Vector2.RIGHT, 3))
 	pass # Replace with function body.

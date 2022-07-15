@@ -5,7 +5,7 @@ var thing_to_move
 var direction
 var valid_number
 
-func _init(var thing_to_move, direction = "RIGHT", x = 1):
+func _init(var thing_to_move, direction = Vector2.RIGHT, x = 1):
 	self.thing_to_move = thing_to_move
 	self.direction = direction
 	self.valid_number = x
@@ -19,12 +19,4 @@ func run():
 	if (current_side == self.valid_number):
 		print("I moved:")
 		print(thing_to_move.my_name)
-		match self.direction:
-			"RIGHT":
-				thing_to_move.move_right()
-			"LEFT":
-				thing_to_move.move_left()
-			"UP":
-				thing_to_move.move_up()
-			"DOWN":
-				thing_to_move.move_down()
+		thing_to_move.move(direction)
