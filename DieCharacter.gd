@@ -71,20 +71,6 @@ func move(var direction):
 	slide(direction)
 	return true
 	
-	
-	
-func move_right():
-	self.move(Vector2.RIGHT)
-
-func move_left():
-	self.move(Vector2.LEFT)
-
-func move_up():
-	self.move(Vector2.UP)
-
-func move_down():
-	self.move(Vector2.DOWN)
-
 func process_input():
 	if Input.is_action_just_pressed("ui_right"):
 		move(Vector2.RIGHT)
