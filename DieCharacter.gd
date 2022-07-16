@@ -10,6 +10,7 @@ export(int) var mandatory_events = 0
 var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
 const tol = .01
+signal select_pressed()
 signal change_face(old_face, new_face)
 
 var state = "WAIT_FOR_INPUT"
@@ -48,10 +49,9 @@ func return_upward_side():
 
 func return_upward_side_in_direction(direction):
 	var rotation_success = rotate(direction)
-	var rc = [rotation_success, return_upward_side()]
-	print(rc)
 	if (!rotation_success):
-		return rc
+		rotate(direction, false)
+	var rc = [rotation_success, return_upward_side()]
 	rotate(-direction,false)
 	return (rc)
 
@@ -121,6 +121,8 @@ func process_input():
 		#print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
+	if Input.is_action_just_pressed("ui_select"):
+		emit_signal("select_pressed")
 
 func add_event(event):
 	event_array.push_back(event)
