@@ -30,6 +30,10 @@ text = "Main Menu"
 margin_top = 18.0
 margin_right = 89.0
 margin_bottom = 38.0
+focus_neighbour_top = NodePath("../Options")
+focus_neighbour_bottom = NodePath("../LevelSelect")
+focus_next = NodePath("../LevelSelect")
+focus_previous = NodePath("../Options")
 text = "Start"
 script = ExtResource( 1 )
 
@@ -37,6 +41,10 @@ script = ExtResource( 1 )
 margin_top = 42.0
 margin_right = 89.0
 margin_bottom = 62.0
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Options")
+focus_next = NodePath("../Options")
+focus_previous = NodePath("../Start")
 text = "Level Select"
 script = ExtResource( 2 )
 
@@ -44,6 +52,10 @@ script = ExtResource( 2 )
 margin_top = 66.0
 margin_right = 89.0
 margin_bottom = 86.0
+focus_neighbour_top = NodePath("../LevelSelect")
+focus_neighbour_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../LevelSelect")
 text = "Options"
 script = ExtResource( 3 )
 
