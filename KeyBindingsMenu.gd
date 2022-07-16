@@ -8,7 +8,6 @@ var button = null
 var action_string = ""
 var action_display = ""
 var action_label = null
-var value_label = null
 
 
 var can_change_key = false
@@ -24,15 +23,15 @@ func _ready():
 	action_tags.ui_home = "MAIN MENU"
 	_set_keys()  
 
-func set_button_label(button, action_type, action_text, action_label, value_label):
+func set_button_label(button, action_type, action_text, action_label):
 		action_label.set_text(action_text)
 		button.toggle_mode = true
 		button.set_pressed(false)
 		if !InputMap.get_action_list(action_type).empty():
-			value_label.set_text(InputMap.get_action_list(action_type)[0].as_text())
+			button.set_text(InputMap.get_action_list(action_type)[0].as_text())
 		else:
-			value_label.set_text("No Button Set")
-		button.connect("pressed", self, "_on_button_pressed", [button, action_type, action_text, action_label, value_label, ])
+			button.set_text("No Button Set")
+		button.connect("pressed", self, "_on_button_pressed", [button, action_type, action_text, action_label, button, ])
 
 
 func _set_keys():
@@ -43,30 +42,27 @@ func _set_keys():
 		hbox.add_child(action_label)
 		var button = Button.new()
 		hbox.add_child(button)
-		var value_label = Label.new()
-		button.add_child(value_label)
 		
 		print(j)
 		print(action_tags[j])
-		set_button_label(button, j, action_tags[j], action_label, value_label)
+		set_button_label(button, j, action_tags[j], action_label)
 		# if !InputMap.get_action_list(j).empty():
 		# 	get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_text(InputMap.get_action_list(j)[0].as_text())
 		# else:
 		# 	get_node("Panel/ScrollContainer/VBoxContainer/HBoxCont_" + str(j) + "/Button").set_text("No Button!")
 
 
-func _mark_button(button, action_string, action_display, action_label, value_label):
+func _mark_button(button, action_string, action_display, action_label):
 	can_change_key = true
 	self.button = button
 	self.action_string = action_string
 	self.action_display = action_display
 	self.action_label = action_label
-	self.value_label = value_label
 	button.set_pressed(false)
 
-func _on_button_pressed(button, action_name, action_display, action_label, value_label):
-	print("Pressed button " + action_label.get_text() + ": " + value_label.get_text())
-	_mark_button(button, action_name, action_display, action_label, value_label)
+func _on_button_pressed(button, action_name, action_display, action_label):
+	print("Pressed button " + action_label.get_text() + ": " + button.get_text())
+	_mark_button(button, action_name, action_display, action_label)
 		
 func _input(event):
 	if can_change_key && (event is InputEventKey):
@@ -83,4 +79,4 @@ func _change_key(new_key):
 	# 		InputMap.action_erase_event(i, new_key)
 	
 	InputMap.action_add_event(action_string, new_key)
-	set_button_label(self.button, self.action_string, self.action_display, self.action_label, self.value_label)
+	set_button_label(self.button, self.action_string, self.action_display, self.action_label)
