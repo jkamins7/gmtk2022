@@ -27,8 +27,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Gmtk 2022"
-run/main_scene="res://jkamins7_play.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+scene=false
 
 [physics]
 
