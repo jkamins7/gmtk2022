@@ -20,11 +20,11 @@ position = Vector2( 241, 177 )
 rotation = -1.5708
 permitted_number = 6
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 49, 177 )
-
 [node name="Test3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 273, 177 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 49, 177 )
 
 [node name="CompassRose" parent="." instance=ExtResource( 4 )]
 
