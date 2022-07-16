@@ -36,12 +36,3 @@ margin_bottom = 122.0
 text = "This arrow tile will roll you
 if you match it's pips"
 script = ExtResource( 7 )
-
-[node name="Label4" type="Label" parent="."]
-margin_left = 105.0
-margin_top = 256.0
-margin_right = 288.0
-margin_bottom = 287.0
-text = "This shows how many pips
-will be up if you move"
-script = ExtResource( 7 )
