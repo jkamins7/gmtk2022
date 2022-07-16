@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://images/rotatearrow.png" type="Texture" id=1]
 [ext_resource path="res://some_tile.gd" type="Script" id=2]
 [ext_resource path="res://die_rect.tres" type="Shape2D" id=3]
 [ext_resource path="res://RollTilePush.gd" type="Script" id=4]
+[ext_resource path="res://images/cornerdice.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -72,3 +73,7 @@ shape = ExtResource( 3 )
 anims/RESET = SubResource( 1 )
 anims/active = SubResource( 2 )
 anims/idle = SubResource( 3 )
+
+[node name="Number" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+hframes = 6
