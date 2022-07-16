@@ -2,13 +2,17 @@ extends Node
 class_name MandatoryEvent
 
 var thing_with_counter
+var thing_to_change_color
 var thing_that_moved
 var valid_number
+var color_to_change_to
 
-func _init(thing_that_moved, thing_with_counter, valid_number = 0):
+func _init(thing_that_moved, thing_with_counter, thing_to_change_color, valid_number = 0, target_color = Color(0,0,1)):
 	self.thing_that_moved = thing_that_moved
 	self.thing_with_counter = thing_with_counter
+	self.thing_to_change_color = thing_to_change_color
 	self.valid_number = valid_number
+	self.color_to_change_to = target_color
 	self.name = 'mandatory'
 
 # Called when the node enters the scene tree for the first time.
@@ -23,8 +27,7 @@ func permitted():
 	return matches(current_side)
 
 func run():
-	print("YES")
 	if permitted():
-		print("YESYES")
+		self.thing_to_change_color.set_modulate(color_to_change_to)
 		thing_with_counter.mandatory_events_remaining -= 1
 		print(thing_with_counter.mandatory_events_remaining)
