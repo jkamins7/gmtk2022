@@ -41,6 +41,22 @@ text = "You are a die
 Use the RIGHT LEFT UP DOWN to roll"
 script = ExtResource( 7 )
 
+[node name="Area2D" type="Area2D" parent="Label"]
+position = Vector2( 65, 56 )
+scale = Vector2( 1.5, 0.7 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/Area2D"]
+shape = ExtResource( 8 )
+one_way_collision_margin = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
 [node name="Label2" type="Label" parent="."]
 visible = false
 margin_left = 60.0
@@ -52,8 +68,8 @@ To trigger, you need to match the pips"
 script = ExtResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="Label2"]
-position = Vector2( 85, 58 )
-scale = Vector2( 0.7, 0.7 )
+position = Vector2( 71, 58 )
+scale = Vector2( 1.5, 0.7 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -77,8 +93,10 @@ text = "Make your way to the exit"
 script = ExtResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="Label3"]
-position = Vector2( 21, 51 )
-scale = Vector2( 0.7, 0.7 )
+position = Vector2( 68, 50 )
+scale = Vector2( 3, 0.7 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -100,7 +118,9 @@ will be up if you move
 Invert with SELECT"
 script = ExtResource( 7 )
 
-[connection signal="area_entered" from="Label2/Area2D" to="Label" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Label/Area2D" to="Label" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Label/Area2D" to="Label" method="_on_Area2D_area_exited"]
 [connection signal="area_entered" from="Label2/Area2D" to="Label2" method="_on_Area2D_area_entered"]
-[connection signal="area_entered" from="Label3/Area2D" to="Label2" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Label2/Area2D" to="Label2" method="_on_Area2D_area_exited"]
 [connection signal="area_entered" from="Label3/Area2D" to="Label3" method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Label3/Area2D" to="Label3" method="_on_Area2D_area_exited"]
