@@ -20,6 +20,7 @@ var my_name: String
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	my_name = "Player"
+	emit_signal("change_face", NAN, return_upward_side())
 	pass # Replace with function body.
 
 func return_upward_side():
@@ -38,14 +39,28 @@ func return_upward_side():
 	if (current_state[0].cross(current_state[1])[2] < -0.5):
 		return(4)
 
+func return_upward_side_in_direction(direction):
+	var rotation_success = rotate(direction)
+	var rc = [rotation_success, return_upward_side()]
+	print(rc)
+	if (!rotation_success):
+		return rc
+	rotate(-direction,false)
+	return (rc)
+
 func can_move(direction):
 	ray.cast_to = direction * MOVEMENT_SIZE
 	ray.force_raycast_update()
 	return !ray.is_colliding()
 
-func rotate(direction):
+func rotate(direction, check = true, emit = false):
+	if emit:
+		var previous_face = return_upward_side()
+		var rc = rotate(direction,check,false)
+		emit_signal("change_face", previous_face, return_upward_side())
+		return rc
 	print("Rotating")
-	if !can_move(direction):
+	if (check && (!can_move(direction))):
 		return false
 	var rotation_axis = Vector3.ZERO
 	if ((direction - Vector2.RIGHT).length() < tol):
@@ -60,38 +75,42 @@ func rotate(direction):
 	current_state[1] = current_state[1].rotated(rotation_axis,PI/2)
 	return true
 
+
 func slide(direction):
 	print("Sliding")
 	position += direction * MOVEMENT_SIZE
 
-func move(var direction):
+func move(var direction, emit = true):
+	if emit:
+		var previous_face = return_upward_side()
+		var rc = move(direction,false)
+		emit_signal("change_face", previous_face, return_upward_side())
+		return rc
 	print("Full Move")
-	var previous_face = return_upward_side()
 	if !rotate(direction):
 		return false
-	emit_signal("change_face", previous_face, return_upward_side())
 	slide(direction)
 	return true
 	
 func process_input():
 	if Input.is_action_just_pressed("ui_right"):
+		print("INPUT RIGHT")
 		move(Vector2.RIGHT)
-		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_left"):
+		print("INPUT LEFT")
 		move(Vector2.LEFT)
-		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_up"):
+		print("INPUT UP")
 		move(Vector2.UP)
-		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_down"):
+		print("INPUT DOWN")
 		move(Vector2.DOWN)
-		print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 
