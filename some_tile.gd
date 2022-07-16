@@ -8,6 +8,9 @@ extends Sprite
 
 export(int) var permitted_number = 3
 export(Vector2) var parent_transform = Vector2.UP
+onready var player = $AnimationPlayer
+var active = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var player_node = get_owner().find_node("Player")
@@ -17,3 +20,13 @@ func _ready():
 
 func _on_change_face(old_face, new_face):
 	print("Changed from", old_face, "->", new_face)
+	active = new_face == permitted_number
+
+
+
+func _physics_process(delta):
+	if active:
+		player.play("active")
+	else:
+		player.play("idle")
+	
