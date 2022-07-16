@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "PushEvent",
 "language": "GDScript",
 "path": "res://PushEvent.gd"
+}, {
+"base": "Node",
+"class": "RollEvent",
+"language": "GDScript",
+"path": "res://RollEvent.gd"
 } ]
 _global_script_class_icons={
-"PushEvent": ""
+"PushEvent": "",
+"RollEvent": ""
 }
 
 [application]

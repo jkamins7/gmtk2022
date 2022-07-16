@@ -1,5 +1,5 @@
 extends Node
-class_name PushEvent
+class_name RollEvent
 
 var thing_to_move
 var direction
@@ -17,4 +17,6 @@ func _ready():
 func run():
 	var current_side = thing_to_move.return_upward_side()
 	if (current_side == self.valid_number):
-		thing_to_move.slide(direction)
+		print("I moved:")
+		print(thing_to_move.my_name)
+		thing_to_move.move(direction)

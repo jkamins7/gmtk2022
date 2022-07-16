@@ -17,4 +17,7 @@ func _ready():
 #func _process(delta):
 #	pass
 func _on_Hitbox_area_entered(area):
-	area.get_parent().add_event(RollEvent.new(area.get_parent(), parent_transform, permitted_number))
+	print("Something")
+	print(parent_transform)
+	print(permitted_number)
+	area.get_parent().add_event(PushEvent.new(area.get_parent(), parent_transform, permitted_number))
