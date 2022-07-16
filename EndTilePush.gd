@@ -1,7 +1,6 @@
 extends Area2D
 
-export(int) var permitted_number = 0
-export(int) var required_mandatory = 0
+var permitted_number = 0
 # Called when the node enters the scene tree for the first time.
 var parent_transform = null
 func _ready():
