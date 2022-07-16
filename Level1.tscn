@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://chessboard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://EndTile.tscn" type="PackedScene" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://CompassRose.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MandatoryTile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Level1.gd" type="Script" id=6]
+[ext_resource path="res://TutorialLabel1.gd" type="Script" id=7]
+[ext_resource path="res://die_rect.tres" type="Shape2D" id=8]
+[ext_resource path="res://TutorialLabel2.gd" type="Script" id=9]
+[ext_resource path="res://TutorialLabel3.gd" type="Script" id=10]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -25,3 +29,62 @@ position = Vector2( 49, 177 )
 [node name="Test" parent="." instance=ExtResource( 5 )]
 position = Vector2( 145, 177 )
 permitted_number = 2
+
+[node name="Label" type="Label" parent="."]
+margin_left = 2.0
+margin_top = 126.0
+margin_right = 185.0
+margin_bottom = 140.0
+text = "Use the arrow keys to move."
+script = ExtResource( 7 )
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+margin_left = 61.0
+margin_top = 126.0
+margin_right = 227.0
+margin_bottom = 140.0
+text = "Trigger all mandatory tiles"
+script = ExtResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="Label2"]
+position = Vector2( 51, 51 )
+scale = Vector2( 0.7, 0.7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label2/Area2D"]
+shape = ExtResource( 8 )
+one_way_collision_margin = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+margin_left = 157.0
+margin_top = 126.0
+margin_right = 321.0
+margin_bottom = 140.0
+text = "Make your way to the exit"
+script = ExtResource( 10 )
+
+[node name="Area2D" type="Area2D" parent="Label3"]
+position = Vector2( 51, 51 )
+scale = Vector2( 0.7, 0.7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label3/Area2D"]
+shape = ExtResource( 8 )
+one_way_collision_margin = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[connection signal="area_entered" from="Label2/Area2D" to="Label" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Label2/Area2D" to="Label2" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Label3/Area2D" to="Label2" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Label3/Area2D" to="Label3" method="_on_Area2D_area_entered"]
