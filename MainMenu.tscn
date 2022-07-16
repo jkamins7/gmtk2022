@@ -12,44 +12,41 @@ anchor_bottom = 1.0
 margin_right = 307.0
 margin_bottom = 172.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 margin_right = 307.0
+margin_bottom = 86.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer"]
+margin_left = 109.0
+margin_right = 198.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+margin_right = 89.0
 margin_bottom = 14.0
 text = "Main Menu"
 
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 307.0
+margin_right = 89.0
 margin_bottom = 38.0
+text = "Start"
 script = ExtResource( 1 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Start"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Start"
-
-[node name="LevelSelect" type="Button" parent="VBoxContainer"]
+[node name="LevelSelect" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 margin_top = 42.0
-margin_right = 307.0
+margin_right = 89.0
 margin_bottom = 62.0
+text = "Level Select"
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/LevelSelect"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Level Select"
-
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 margin_top = 66.0
-margin_right = 307.0
+margin_right = 89.0
 margin_bottom = 86.0
+text = "Options"
 script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Options"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Options"
-
-[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
-[connection signal="pressed" from="VBoxContainer/LevelSelect" to="VBoxContainer/LevelSelect" method="_on_LevelSelect_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="VBoxContainer/Options" method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/Start" to="VBoxContainer/CenterContainer/VBoxContainer/Start" method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/LevelSelect" to="VBoxContainer/CenterContainer/VBoxContainer/LevelSelect" method="_on_LevelSelect_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/Options" to="VBoxContainer/CenterContainer/VBoxContainer/Options" method="_on_Options_pressed"]
