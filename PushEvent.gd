@@ -9,7 +9,7 @@ func _init(var thing_to_move, direction = Vector2.RIGHT, x = 0):
 	self.thing_to_move = thing_to_move
 	self.direction = direction
 	self.valid_number = x
-	self.name = 'push'
+	self.name = 'slide'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
