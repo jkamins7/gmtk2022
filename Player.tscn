@@ -5,7 +5,7 @@
 [ext_resource path="res://die_rect.tres" type="Shape2D" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 14, 14 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "1"
@@ -140,7 +140,8 @@ anims/RESET = SubResource( 9 )
 
 [node name="Hurtbox2" type="Area2D" parent="."]
 position = Vector2( 243, 152 )
+scale = Vector2( 0.8, 0.8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2"]
-position = Vector2( -243, -152 )
+position = Vector2( -303.75, -190 )
 shape = ExtResource( 3 )

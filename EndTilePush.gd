@@ -17,5 +17,4 @@ func _ready():
 #func _process(delta):
 #	pass
 func _on_Hitbox_area_entered(area):
-	print("I'm doing a thing")
-	area.get_parent().add_event(RollEvent.new(area.get_parent(), parent_transform, permitted_number))
+	get_tree().change_scene("res://LevelEnd.tscn")
