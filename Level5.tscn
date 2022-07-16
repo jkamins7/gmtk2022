@@ -5,7 +5,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MandatoryTile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://PushTile.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Level4.gd" type="Script" id=6]
+[ext_resource path="res://Level5.gd" type="Script" id=6]
 [ext_resource path="res://CompassRose.tscn" type="PackedScene" id=7]
 [ext_resource path="res://TutorialLabel1.gd" type="Script" id=8]
 
