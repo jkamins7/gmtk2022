@@ -18,8 +18,11 @@ func _ready():
 	player_node.connect("change_face", self, "_on_change_face")
 	find_node("Hitbox").parent_transform = 	Vector2.UP.rotated(self.global_rotation_degrees*2*PI/360)
 	find_node("Hitbox").permitted_number = permitted_number
-	
-	number_display.set_frame(permitted_number-1)
+	if permitted_number == 0:
+		number_display.visible = false
+		active = true
+	else:
+		number_display.set_frame(permitted_number-1)
 	 # hacky fix since the parent's rotation applies to this
 	number_display.rotate(-self.global_rotation_degrees*2*PI/360)
 
@@ -27,7 +30,8 @@ func _ready():
 
 func _on_change_face(old_face, new_face):
 	print("Changed from", old_face, "->", new_face)
-	active = new_face == permitted_number
+	if permitted_number != 0:
+		active = new_face == permitted_number
 
 
 

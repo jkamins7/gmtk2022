@@ -12,6 +12,9 @@ signal change_face(old_face, new_face)
 
 var state = "WAIT_FOR_INPUT"
 onready var player = $AnimationPlayer
+onready var move_animation = $MoveAnimation
+onready var die_sprite = $Sprite
+var move_anim_dir = Vector2.RIGHT
 onready var ray = $RayCast2D
  
 var event_array = []
@@ -75,23 +78,23 @@ func move(var direction):
 	
 func process_input():
 	if Input.is_action_just_pressed("ui_right"):
-		move(Vector2.RIGHT)
-		print(return_upward_side())
+		self.add_event(RollEvent.new(self, Vector2.RIGHT))
+		#print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_left"):
-		move(Vector2.LEFT)
-		print(return_upward_side())
+		self.add_event(RollEvent.new(self, Vector2.LEFT))
+		#print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_up"):
-		move(Vector2.UP)
-		print(return_upward_side())
+		self.add_event(RollEvent.new(self, Vector2.UP))
+		#print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 	if Input.is_action_just_pressed("ui_down"):
-		move(Vector2.DOWN)
-		print(return_upward_side())
+		self.add_event(RollEvent.new(self, Vector2.DOWN))
+		#print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
 
@@ -104,14 +107,49 @@ func run_events_until_empty():
 		pass
 	
 	if(!event_array.empty()):
+		if state == "EVENTS_RUNNING" and start_animation(event_array[0]):
+			state = "ANIMATION_RUNNING"
+			return
 		var this_event = event_array.pop_front()
 		this_event.run()
+		if state == "ANIMATION_FINISHED":
+			move_animation.visible = false
+			die_sprite.visible = true
+			state = "EVENTS_RUNNING"
 
+func start_animation(event):
+	if !can_move(event.direction) or !event.matches(return_upward_side()):
+		return false
+	move_animation.rotate(move_anim_dir.angle_to(event.direction))
+	move_anim_dir = event.direction
+	if event.name == "roll":
+		move_animation.visible = true
+		die_sprite.visible = false
+		player.play("roll")
+		print('roll started')
+		state = "ANIMATION_RUNNING"
+		return true
+	return false
+	
+func end_animation():
+	state = "ANIMATION_FINISHED"
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
+
 	match state:
 		"WAIT_FOR_INPUT":
+			if !event_array.empty():
+				state = "EVENTS_RUNNING"
 			process_input()
+			player.play(str(return_upward_side()))
 		"EVENTS_RUNNING":
 			run_events_until_empty()
-	player.play(str(return_upward_side()))
+			if state != "ANIMATION_RUNNING":
+				player.play(str(return_upward_side()))
+		"ANIMATION_FINISHED":
+			run_events_until_empty()
+			player.play(str(return_upward_side()))
+
+	
