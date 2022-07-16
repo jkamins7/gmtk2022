@@ -1,7 +1,7 @@
 extends Area2D
 
 export(int) var permitted_number = 0
-export(Color) var color_to_change_to = Color(0,0,1)
+export(Color) var color_to_change_to = Color(.3,.9,.4)
 var parent_transform
 
 func _ready():
