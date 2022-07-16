@@ -55,6 +55,6 @@ permitted_number = 0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 48, 144 )
-mandatory_events = 6
+mandatory_events = 5
 
 [node name="CompassRose" parent="." instance=ExtResource( 7 )]
