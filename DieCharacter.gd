@@ -125,7 +125,7 @@ func process_input():
 	if Input.is_action_just_pressed("ui_select"):
 		emit_signal("select_pressed")
 	if Input.is_action_just_pressed("ui_home"):
-		get_tree().set_scene("res://MainMenu.tscn")
+		get_tree().change_scene("res://MainMenu.tscn")
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().reload_current_scene()
 

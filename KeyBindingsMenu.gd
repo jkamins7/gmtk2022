@@ -3,7 +3,7 @@ extends VBoxContainer
 
 
 
-enum action_tags {ui_right, ui_left, ui_up, ui_down, ui_select, ui_cancel}
+enum action_tags {ui_right, ui_left, ui_up, ui_down, ui_select, ui_cancel, ui_home}
 var button = null
 var action_string = ""
 var action_display = ""
@@ -21,6 +21,7 @@ func _ready():
 	action_tags.ui_down = "DOWN"
 	action_tags.ui_select = "SELECT"
 	action_tags.ui_cancel = "RESTART"
+	action_tags.ui_home = "MAIN MENU"
 	_set_keys()  
 
 func set_button_label(button, action_type, action_text, action_label, value_label):
