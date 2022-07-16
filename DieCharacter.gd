@@ -111,6 +111,7 @@ func process_input():
 		#print(return_upward_side())
 		state = "EVENTS_RUNNING"
 		pass
+	
 	if Input.is_action_just_pressed("ui_down"):
 		self.add_event(RollEvent.new(self, Vector2.DOWN))
 		#print(return_upward_side())

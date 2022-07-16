@@ -12,6 +12,9 @@ func _next_level():
 	if change_worked != OK:
 		get_tree().change_scene("res://MainMenu.tscn")
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_select"):
+		_next_level()
 
 func _on_Button_pressed():
 	_next_level()
