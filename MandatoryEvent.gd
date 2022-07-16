@@ -32,5 +32,7 @@ func run():
 	if permitted():
 		self.thing_to_change_color.set_modulate(color_to_change_to)
 		thing_with_counter.mandatory_events_remaining -= 1
+		if thing_with_counter.mandatory_events_remaining == 0:
+			thing_with_counter.emit_signal("all_events_over")
 		print(thing_with_counter.mandatory_events_remaining)
 		thing_to_toggle_activated.has_activated = true

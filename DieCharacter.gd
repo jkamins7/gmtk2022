@@ -11,6 +11,7 @@ var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
 const tol = .01
 signal select_pressed()
+signal all_events_over()
 signal change_face(old_face, new_face)
 
 var state = "WAIT_FOR_INPUT"
