@@ -5,6 +5,8 @@ extends KinematicBody2D
 # var b = "text"
 const MOVEMENT_SIZE = 32
 
+export(int) var mandatory_events = 0
+
 var current_state = [Vector3(0,0,1), Vector3(1,0,0)]
 
 const tol = .01
@@ -16,6 +18,7 @@ onready var move_animation = $MoveAnimation
 onready var die_sprite = $Sprite
 var move_anim_dir = Vector2.RIGHT
 onready var ray = $RayCast2D
+var mandatory_events_remaining
  
 var event_array = []
 var my_name: String
@@ -24,6 +27,7 @@ var my_name: String
 func _ready():
 	my_name = "Player"
 	emit_signal("change_face", NAN, return_upward_side())
+	mandatory_events_remaining = mandatory_events
 	pass # Replace with function body.
 
 func return_upward_side():
@@ -138,11 +142,12 @@ func run_events_until_empty():
 			state = "EVENTS_RUNNING"
 
 func start_animation(event):
-	if !can_move(event.direction) or !event.matches(return_upward_side()):
+	if !event.permitted():
+	#if !can_move(event.direction) or !event.matches(return_upward_side()):
 		return false
-	move_animation.rotate(move_anim_dir.angle_to(event.direction))
-	move_anim_dir = event.direction
 	if event.name == "roll":
+		move_animation.rotate(move_anim_dir.angle_to(event.direction))
+		move_anim_dir = event.direction
 		move_animation.visible = true
 		die_sprite.visible = false
 		player.play("roll")

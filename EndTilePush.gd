@@ -1,13 +1,9 @@
 extends Area2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-export(int) var permitted_number = 3
-var parent_transform
+export(int) var permitted_number = 0
+export(int) var required_mandatory = 0
 # Called when the node enters the scene tree for the first time.
+var parent_transform = null
 func _ready():
 	connect("area_entered", self, "_on_Hitbox_area_entered")
 	pass # Replace with function body.
@@ -17,4 +13,4 @@ func _ready():
 #func _process(delta):
 #	pass
 func _on_Hitbox_area_entered(area):
-	get_tree().change_scene("res://LevelEnd.tscn")
+	area.get_parent().add_event(EndEvent.new(area.get_parent(), area.get_parent(), permitted_number))

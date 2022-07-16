@@ -18,7 +18,10 @@ func _ready():
 func matches(num):
 	return self.valid_number == 0 or num == self.valid_number
 
-func run():
+func permitted():
 	var current_side = thing_to_move.return_upward_side()
-	if matches(current_side):
+	return (matches(current_side)) && (thing_to_move.can_move(direction))
+
+func run():
+	if(permitted()):
 		thing_to_move.move(direction)

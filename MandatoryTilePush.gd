@@ -1,6 +1,6 @@
 extends Area2D
 
-export(int) var permitted_number = 3
+export(int) var permitted_number = 0
 var parent_transform
 
 func _ready():
@@ -12,4 +12,8 @@ func _ready():
 #func _process(delta):
 #	pass
 func _on_Hitbox_area_entered(area):
-	area.get_parent().add_event(RollEvent.new(area.get_parent(), parent_transform, permitted_number))
+	area.get_parent().add_event(MandatoryEvent.new(
+		area.get_parent(),
+		area.get_parent(),
+		permitted_number
+	))

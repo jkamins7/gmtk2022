@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "EndEvent",
+"language": "GDScript",
+"path": "res://EndEvent.gd"
+}, {
+"base": "Node",
+"class": "MandatoryEvent",
+"language": "GDScript",
+"path": "res://MandatoryEvent.gd"
+}, {
+"base": "Node",
 "class": "PushEvent",
 "language": "GDScript",
 "path": "res://PushEvent.gd"
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://RollEvent.gd"
 } ]
 _global_script_class_icons={
+"EndEvent": "",
+"MandatoryEvent": "",
 "PushEvent": "",
 "RollEvent": ""
 }
