@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://LevelSelectButton.gd" type="Script" id=1]
+
+[node name="LevelSelectButton" type="Button"]
+margin_top = 24.0
+margin_right = 307.0
+margin_bottom = 44.0
+script = ExtResource( 1 )
+level_to_select = 2
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Level 2"
+
+[connection signal="pressed" from="." to="." method="_on_LevelSelectButton_pressed"]

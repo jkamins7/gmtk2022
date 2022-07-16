@@ -1,6 +1,6 @@
 extends Button
 
-
+export(int) var level_to_select = 1
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -8,13 +8,10 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("Label").text = "Level" + String(level_to_select)
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_LevelSelect_pressed():
-	get_tree().change_scene("res://LevelSelect.tscn")
+func _on_LevelSelectButton_pressed():
+	print("Opening level ", "res://Level" + String(level_to_select) + ".tscn")
+	get_tree().change_scene("res://Level" + String(level_to_select) + ".tscn")

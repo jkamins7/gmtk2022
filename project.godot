@@ -34,6 +34,13 @@ config/icon="res://icon.png"
 
 Globals="*res://Globals.tscn"
 
+[display]
+
+window/size/width=288
+window/size/height=288
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [global]
 
 scene=false

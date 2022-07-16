@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://StartButton.gd" type="Script" id=1]
+[ext_resource path="res://LevelSelectButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MainMenuButton.gd" type="Script" id=3]
 
 [node name="Control" type="Control"]
@@ -19,32 +19,24 @@ text = "Levels"
 [node name="Levels" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 18.0
 margin_right = 307.0
-margin_bottom = 62.0
+margin_bottom = 86.0
 
-[node name="Start" type="Button" parent="VBoxContainer/Levels"]
-margin_right = 307.0
+[node name="LevelSelectButton" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 0.0
 margin_bottom = 20.0
-script = ExtResource( 1 )
+level_to_select = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/Levels/Start"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Level 1"
+[node name="LevelSelectButton2" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 
-[node name="LevelSelect" type="Button" parent="VBoxContainer/Levels"]
-margin_top = 24.0
-margin_right = 307.0
-margin_bottom = 44.0
-
-[node name="Label" type="Label" parent="VBoxContainer/Levels/LevelSelect"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Level 2"
+[node name="LevelSelectButton3" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 48.0
+margin_bottom = 68.0
+level_to_select = 3
 
 [node name="Options" type="Button" parent="VBoxContainer"]
-margin_top = 66.0
+margin_top = 90.0
 margin_right = 307.0
-margin_bottom = 86.0
+margin_bottom = 110.0
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="VBoxContainer/Options"]
@@ -52,5 +44,4 @@ margin_right = 40.0
 margin_bottom = 14.0
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/Levels/Start" to="VBoxContainer/Levels/Start" method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="VBoxContainer/Options" method="_on_Options_pressed"]
