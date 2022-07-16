@@ -30,6 +30,10 @@ config/name="Gmtk 2022"
 run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Globals.tscn"
+
 [global]
 
 scene=false

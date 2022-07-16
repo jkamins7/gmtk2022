@@ -17,5 +17,5 @@ func _ready():
 
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://jkamins7_play.tscn")
+	get_tree().change_scene("res://Level1.tscn")
 	pass # Replace with function body.
