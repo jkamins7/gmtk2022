@@ -19,7 +19,7 @@ text = "Levels"
 [node name="Levels" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 18.0
 margin_right = 307.0
-margin_bottom = 86.0
+margin_bottom = 110.0
 
 [node name="LevelSelectButton" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 0.0
@@ -33,10 +33,15 @@ margin_top = 48.0
 margin_bottom = 68.0
 level_to_select = 3
 
+[node name="LevelSelectButton4" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
+margin_top = 72.0
+margin_bottom = 92.0
+level_to_select = 4
+
 [node name="Options" type="Button" parent="VBoxContainer"]
-margin_top = 90.0
+margin_top = 114.0
 margin_right = 307.0
-margin_bottom = 110.0
+margin_bottom = 134.0
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="VBoxContainer/Options"]
