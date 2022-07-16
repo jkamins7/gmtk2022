@@ -18,7 +18,7 @@ func update_compass_in_direction(direction, sprite):
 		sprite.set_frame(upward_side_in_direction[1] - 1)
 		return
 	# JK : This probably should be 7, a special NAN pip set, and greyed out
-	sprite.set_frame(upward_side_in_direction[1] - 1)
+	sprite.set_frame(6)
 	
 
 func _on_change_face(old_face, new_face):

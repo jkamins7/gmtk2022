@@ -145,15 +145,16 @@ func start_animation(event):
 	if !event.permitted():
 	#if !can_move(event.direction) or !event.matches(return_upward_side()):
 		return false
-	if event.name == "roll":
+	if event.name == "roll" or event.name == "slide":
 		move_animation.rotate(move_anim_dir.angle_to(event.direction))
 		move_anim_dir = event.direction
 		move_animation.visible = true
 		die_sprite.visible = false
-		player.play("roll")
-		print('roll started')
+
+		player.play(event.name)
 		state = "ANIMATION_RUNNING"
 		return true
+
 	return false
 	
 func end_animation():
