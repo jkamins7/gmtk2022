@@ -18,6 +18,8 @@ var state = "WAIT_FOR_INPUT"
 onready var player = $AnimationPlayer
 onready var move_animation = $MoveAnimation
 onready var die_sprite = $Sprite
+onready var turn_noise = $TurnAudio
+onready var slide_noise = $SlideAudio
 var move_anim_dir = Vector2.RIGHT
 onready var ray = $RayCast2D
 var mandatory_events_remaining
@@ -166,6 +168,13 @@ func start_animation(event):
 	
 func end_animation():
 	state = "ANIMATION_FINISHED"
+
+	
+func play_die_turn_sound():
+	turn_noise.play()
+	
+func play_die_slide_sound():
+	slide_noise.play()
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

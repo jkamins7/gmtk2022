@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://DieCharacter.gd" type="Script" id=1]
 [ext_resource path="res://images/dice.png" type="Texture" id=2]
 [ext_resource path="res://die_rect.tres" type="Shape2D" id=3]
 [ext_resource path="res://images/dice_animations.png" type="Texture" id=4]
+[ext_resource path="res://dieturn.wav" type="AudioStream" id=5]
+[ext_resource path="res://slide.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 14 )
@@ -174,11 +176,14 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.5, 0.501 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "end_animation"
+}, {
+"args": [  ],
+"method": "play_die_turn_sound"
 } ]
 }
 
@@ -204,9 +209,12 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "play_die_slide_sound"
+}, {
 "args": [  ],
 "method": "end_animation"
 } ]
@@ -255,3 +263,10 @@ texture = ExtResource( 4 )
 offset = Vector2( 16, 0 )
 hframes = 9
 frame = 5
+
+[node name="TurnAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -8.0
+
+[node name="SlideAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

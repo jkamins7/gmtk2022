@@ -8,6 +8,7 @@ var thing_to_toggle_activated
 var valid_number
 var color_to_change_to
 
+
 func _init(thing_that_moved, thing_with_counter, thing_to_change_color, thing_to_toggle_activated, valid_number = 0, target_color = Color(0,0,1)):
 	self.thing_that_moved = thing_that_moved
 	self.thing_with_counter = thing_with_counter
@@ -32,7 +33,11 @@ func run():
 	if permitted():
 		self.thing_to_change_color.set_modulate(color_to_change_to)
 		thing_with_counter.mandatory_events_remaining -= 1
+		
 		if thing_with_counter.mandatory_events_remaining == 0:
 			thing_with_counter.emit_signal("all_events_over")
+			thing_to_change_color.find_node('AllSuccessSound').play()
+		else:
+			thing_to_change_color.find_node('SuccessSound').play()
 		print(thing_with_counter.mandatory_events_remaining)
 		thing_to_toggle_activated.has_activated = true
