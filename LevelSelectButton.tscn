@@ -13,5 +13,7 @@ level_to_select = 2
 margin_right = 40.0
 margin_bottom = 14.0
 text = "Level 2"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="." to="." method="_on_LevelSelectButton_pressed"]
