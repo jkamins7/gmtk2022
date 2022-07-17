@@ -11,79 +11,124 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 
 [node name="TileMap" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65536, 0, 0, 65537, 1, 0, 65538, 2, 0, 65539, 1, 0, 65540, 0, 0, 65541, 0, 0, 65542, 2, 0, 65543, 1, 0, 65544, 2, 0, 65545, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 33.0
-margin_top = 33.0
-margin_right = 287.0
-margin_bottom = 287.0
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 254.0
-margin_bottom = 8.0
-text = "Levels"
+margin_top = 68.0
+margin_right = 127.0
+margin_bottom = 256.0
 
 [node name="Levels" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 12.0
-margin_right = 254.0
-margin_bottom = 248.0
+margin_right = 94.0
+margin_bottom = 176.0
 
 [node name="LevelSelectButton" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 0.0
-margin_right = 254.0
+margin_right = 94.0
 margin_bottom = 26.0
 level_to_select = 1
 
 [node name="LevelSelectButton2" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 30.0
-margin_right = 254.0
+margin_right = 94.0
 margin_bottom = 56.0
 
 [node name="LevelSelectButton3" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 60.0
-margin_right = 254.0
+margin_right = 94.0
 margin_bottom = 86.0
 level_to_select = 3
 
 [node name="LevelSelectButton8" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 90.0
-margin_right = 254.0
+margin_right = 94.0
 margin_bottom = 116.0
 level_to_select = 4
 
 [node name="LevelSelectButton4" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 120.0
-margin_right = 254.0
+margin_right = 94.0
 margin_bottom = 146.0
 level_to_select = 5
 
 [node name="LevelSelectButton5" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
 margin_top = 150.0
-margin_right = 254.0
+margin_right = 94.0
 margin_bottom = 176.0
 level_to_select = 6
 
-[node name="LevelSelectButton6" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
-margin_top = 180.0
-margin_right = 254.0
-margin_bottom = 206.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_left = 193.0
+margin_top = 67.0
+margin_right = 288.0
+margin_bottom = 256.0
+
+[node name="LevelSelectButton6" parent="VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_right = 95.0
+margin_bottom = 26.0
 level_to_select = 7
 
-[node name="LevelSelectButton7" parent="VBoxContainer/Levels" instance=ExtResource( 2 )]
-margin_top = 210.0
-margin_right = 254.0
-margin_bottom = 236.0
+[node name="LevelSelectButton7" parent="VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 30.0
+margin_right = 95.0
+margin_bottom = 56.0
 level_to_select = 8
 
-[node name="Options" type="Button" parent="VBoxContainer"]
-margin_top = 252.0
-margin_right = 254.0
-margin_bottom = 278.0
+[node name="LevelSelectButton" parent="VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 60.0
+margin_right = 95.0
+margin_bottom = 86.0
+level_to_select = 9
+
+[node name="LevelSelectButton2" parent="VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 90.0
+margin_right = 95.0
+margin_bottom = 116.0
+level_to_select = 10
+
+[node name="LevelSelectButton3" parent="VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 120.0
+margin_right = 95.0
+margin_bottom = 146.0
+level_to_select = 11
+
+[node name="LevelSelectButton4" parent="VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 150.0
+margin_right = 95.0
+margin_bottom = 176.0
+level_to_select = 12
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+margin_left = 96.0
+margin_top = 259.0
+margin_right = 224.0
+margin_bottom = 288.0
+
+[node name="Options" type="Button" parent="VBoxContainer3"]
+margin_right = 128.0
+margin_bottom = 26.0
+text = "Back"
 script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Options"]
+[node name="Label" type="Label" parent="VBoxContainer3/Options"]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/Options" to="VBoxContainer/Options" method="_on_Options_pressed"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+margin_left = 136.0
+margin_top = 33.0
+margin_right = 224.0
+margin_bottom = 64.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer4"]
+margin_top = 11.0
+margin_right = 88.0
+margin_bottom = 19.0
+text = "Levels"
+
+[connection signal="pressed" from="VBoxContainer3/Options" to="VBoxContainer3/Options" method="_on_Options_pressed"]

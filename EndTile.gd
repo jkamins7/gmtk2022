@@ -1,7 +1,7 @@
 extends Sprite
 
 export(int) var permitted_number = 0
-export(Color) var color_i_turn_when_active = Color(0,0,1)
+export(Color) var color_i_turn_when_active = Color(.3,.9,.4)
 
 onready var hitbox = $Hitbox
 

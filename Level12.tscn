@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://PushTile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://RollTile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BaseLevel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MandatoryTile.tscn" type="PackedScene" id=6]
+
+[node name="Level" instance=ExtResource( 3 )]
+level = 12
+
+[node name="TileMap" parent="." index="0"]
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65536, 0, 0, 65537, 1, 0, 65538, 2, 0, 65539, 1, 0, 65540, 2, 0, 65541, 1, 0, 65542, 2, 0, 65543, 1, 0, 65544, 2, 0, 65545, 0, 0, 131072, 0, 0, 131073, 2, 0, 131074, 1, 0, 131075, 2, 0, 131076, 1, 0, 131077, 2, 0, 131078, 1, 0, 131079, 2, 0, 131080, 1, 0, 131081, 0, 0, 196608, 0, 0, 196609, 1, 0, 196610, 2, 0, 196611, 1, 0, 196612, 2, 0, 196613, 1, 0, 196614, 2, 0, 196615, 1, 0, 196616, 2, 0, 196617, 0, 0, 262144, 0, 0, 262145, 2, 0, 262146, 1, 0, 262147, 2, 0, 262148, 1, 0, 262149, 2, 0, 262150, 1, 0, 262151, 2, 0, 262152, 1, 0, 262153, 0, 0, 327680, 0, 0, 327681, 1, 0, 327682, 2, 0, 327683, 1, 0, 327684, 2, 0, 327685, 1, 0, 327686, 2, 0, 327687, 1, 0, 327688, 2, 0, 327689, 0, 0, 393216, 0, 0, 393217, 2, 0, 393218, 1, 0, 393219, 2, 0, 393220, 1, 0, 393221, 2, 0, 393222, 1, 0, 393223, 2, 0, 393224, 1, 0, 393225, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0 )
+
+[node name="Test2" parent="." index="2" instance=ExtResource( 6 )]
+position = Vector2( 48, 48 )
+permitted_number = 1
+
+[node name="Test12" parent="." index="3" instance=ExtResource( 6 )]
+position = Vector2( 272, 48 )
+permitted_number = 6
+
+[node name="Test25" parent="." index="4" instance=ExtResource( 6 )]
+position = Vector2( 272, 208 )
+permitted_number = 4
+
+[node name="Test26" parent="." index="5" instance=ExtResource( 6 )]
+position = Vector2( 80, 176 )
+permitted_number = 5
+
+[node name="Test27" parent="." index="6" instance=ExtResource( 6 )]
+position = Vector2( 240, 80 )
+permitted_number = 2
+
+[node name="Test9" parent="." index="7" instance=ExtResource( 6 )]
+position = Vector2( 48, 208 )
+
+[node name="Test3" parent="." index="8" instance=ExtResource( 1 )]
+position = Vector2( 48, 112 )
+rotation = 3.14159
+permitted_number = 0
+
+[node name="Test10" parent="." index="9" instance=ExtResource( 1 )]
+position = Vector2( 48, 144 )
+rotation = 3.14159
+permitted_number = 0
+
+[node name="Test11" parent="." index="10" instance=ExtResource( 1 )]
+position = Vector2( 48, 176 )
+rotation = 3.14159
+permitted_number = 0
+
+[node name="Test13" parent="." index="11" instance=ExtResource( 1 )]
+position = Vector2( 80, 208 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test14" parent="." index="12" instance=ExtResource( 1 )]
+position = Vector2( 112, 208 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test15" parent="." index="13" instance=ExtResource( 1 )]
+position = Vector2( 144, 208 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test16" parent="." index="14" instance=ExtResource( 1 )]
+position = Vector2( 176, 208 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test17" parent="." index="15" instance=ExtResource( 1 )]
+position = Vector2( 208, 208 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test4" parent="." index="16" instance=ExtResource( 1 )]
+position = Vector2( 112, 48 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test5" parent="." index="17" instance=ExtResource( 1 )]
+position = Vector2( 144, 48 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test6" parent="." index="18" instance=ExtResource( 1 )]
+position = Vector2( 176, 48 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test7" parent="." index="19" instance=ExtResource( 1 )]
+position = Vector2( 208, 48 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test8" parent="." index="20" instance=ExtResource( 1 )]
+position = Vector2( 240, 48 )
+rotation = 1.5708
+permitted_number = 0
+
+[node name="Test18" parent="." index="21" instance=ExtResource( 1 )]
+position = Vector2( 272, 80 )
+rotation = 3.14159
+permitted_number = 0
+
+[node name="Test19" parent="." index="22" instance=ExtResource( 1 )]
+position = Vector2( 272, 112 )
+rotation = 3.14159
+permitted_number = 0
+
+[node name="Test21" parent="." index="23" instance=ExtResource( 2 )]
+position = Vector2( 48, 80 )
+rotation = 1.5708
+permitted_number = 2
+
+[node name="Test23" parent="." index="24" instance=ExtResource( 2 )]
+position = Vector2( 240, 208 )
+permitted_number = 5
+
+[node name="Test24" parent="." index="25" instance=ExtResource( 2 )]
+position = Vector2( 272, 176 )
+rotation = -1.5708
+permitted_number = 4
+
+[node name="Test22" parent="." index="26" instance=ExtResource( 2 )]
+position = Vector2( 80, 48 )
+rotation = 3.14159
+
+[node name="Test20" parent="." index="27" instance=ExtResource( 1 )]
+position = Vector2( 272, 144 )
+rotation = 3.14159
+permitted_number = 0
+
+[node name="Player" parent="." index="28"]
+position = Vector2( 80, 80 )
+mandatory_events = 6

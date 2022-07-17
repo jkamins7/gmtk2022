@@ -70,6 +70,7 @@ scale = Vector2( 0.9, 0.9 )
 shape = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 3.0
 anims/RESET = SubResource( 1 )
 anims/active = SubResource( 2 )
 anims/idle = SubResource( 3 )

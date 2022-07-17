@@ -67,7 +67,7 @@ func rotate(direction, check = true, emit = false):
 		var rc = rotate(direction,check,false)
 		emit_signal("change_face", previous_face, return_upward_side())
 		return rc
-	print("Rotating")
+	#print("Rotating")
 	if (check && (!can_move(direction))):
 		return false
 	var rotation_axis = Vector3.ZERO
@@ -85,7 +85,7 @@ func rotate(direction, check = true, emit = false):
 
 
 func slide(direction):
-	print("Sliding")
+	#print("Sliding")
 	position += direction * MOVEMENT_SIZE
 
 func move(var direction, emit = true):
@@ -94,7 +94,7 @@ func move(var direction, emit = true):
 		var rc = move(direction,false)
 		emit_signal("change_face", previous_face, return_upward_side())
 		return rc
-	print("Full Move")
+	#print("Full Move")
 	if !rotate(direction):
 		return false
 	slide(direction)
