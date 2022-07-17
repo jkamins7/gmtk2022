@@ -8,8 +8,8 @@ export(int) var level_to_select = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.text = "Level" + String(level_to_select)
-	get_node("Label").text = "Level" + String(level_to_select)
+	self.text = "Level " + String(level_to_select)
+	get_node("Label").text = "Level " + String(level_to_select)
 	pass # Replace with function body.
 
 

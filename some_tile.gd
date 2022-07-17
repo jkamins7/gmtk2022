@@ -29,7 +29,7 @@ func _ready():
 
 
 func _on_change_face(old_face, new_face):
-	print("Changed from", old_face, "->", new_face)
+	#print("Changed from", old_face, "->", new_face)
 	if permitted_number != 0:
 		active = new_face == permitted_number
 
