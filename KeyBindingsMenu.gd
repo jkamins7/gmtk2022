@@ -31,7 +31,7 @@ func set_button_label(button, action_type, action_text, action_label):
 			button.set_text(InputMap.get_action_list(action_type)[0].as_text())
 		else:
 			button.set_text("No Button Set")
-		button.connect("pressed", self, "_on_button_pressed", [button, action_type, action_text, action_label, button, ])
+		button.connect("pressed", self, "_on_button_pressed", [button, action_type, action_text, action_label ])
 
 
 func _set_keys():
